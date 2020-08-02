@@ -27,7 +27,7 @@ def main():
         Pop = flask.request.form['Pop']
         Area = flask.request.form['Area']
         input_variables = pd.DataFrame([['Hlat', 'Hlong', 'MaxSusWinds', 'Clat', 'Clong', 'Pop', 'Area']], columns = [['Hlat', 'Hlong', 'MaxSusWinds', 'Clat', 'Clong', 'Pop', 'Area']], dtype=float)
-        prediction = clf.predict(input_variables)[0]
+        prediction = clf.predict(input_variables)
         return flask.render_template('main.html', original_input = {'Hurricane Latitude':Hlat, 'Hurricane Longitude':Hlong, 'Maximum Sustained Winds (in knots)':MaxSusWinds, 'Country Latitude':Clat, 'Country Longitude':Clong, 'Country Population':Pop, 'Country Area (in square km)':Area}, result = prediction,)
 
 if __name__ == '__main__':

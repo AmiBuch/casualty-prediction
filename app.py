@@ -29,10 +29,10 @@ def main():
         Area = flask.request.form['Area']
         input_variables = pd.DataFrame([[Hlat, Hlong, MaxSusWinds, Clat, Clong, Pop, Area]], columns = ['Hlat', 'Hlong', 'MaxSusWinds', 'Clat', 'Clong', 'Pop', 'Area'], dtype=float)
         prediction = clf.predict(input_variables)
-        prediction = int(prediction)
+        
         if prediction < 0:
             prediction = 0
-        return flask.render_template('main.html', original_input = {'Hurricane Latitude':Hlat, 'Hurricane Longitude':Hlong, 'Maximum Sustained Winds (in knots)':MaxSusWinds, 'Country Latitude':Clat, 'Country Longitude':Clong, 'Country Population':Pop, 'Country Area (in square km)':Area}, result = prediction,)
+        return flask.render_template('main.html', original_input = {'Hurricane Latitude':Hlat, 'Hurricane Longitude':Hlong, 'Maximum Sustained Winds (in knots)':MaxSusWinds, 'Country Latitude':Clat, 'Country Longitude':Clong, 'Country Population':Pop, 'Country Area (in square km)':Area}, result = int(prediction),)
 
 if __name__ == '__main__':
     app.run()

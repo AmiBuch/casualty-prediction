@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn import linear_model
 from sklearn import ensemble
-
+import math
 import flask
 #reading my csv file from the url
 data = pd.read_csv("https://raw.githubusercontent.com/AmiBuch/HurricaneKat-python-ml-data/master/HurricaneDat.csv")
@@ -30,6 +30,7 @@ def main():
         Area = flask.request.form['Area']
         input_variables = pd.DataFrame([[Hlat, Hlong, MaxSusWinds, Clat, Clong, Pop, Area]], columns = ['Hlat', 'Hlong', 'MaxSusWinds', 'Clat', 'Clong', 'Pop', 'Area'], dtype=float)
         prediction = clf.predict(input_variables)
+        prediction = math.floor(prediction)
         if prediction < 0:
             prediction = 0
         return flask.render_template('main.html', original_input = {'Hurricane Latitude':Hlat, 'Hurricane Longitude':Hlong, 'Maximum Sustained Winds (in knots)':MaxSusWinds, 'Country Latitude':Clat, 'Country Longitude':Clong, 'Country Population':Pop, 'Country Area (in square km)':Area}, result = prediction,)

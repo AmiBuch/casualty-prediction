@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Hurricane Casualty Prediction</title>
+    <style>
+        form {
+            margin: auto;
+            width: 35%;
+        }
+
+        .result {
+            margin: auto;
+            width: 35%;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <form action="{{ url_for('main') }}" method="POST">
+        <fieldset>
+            <legend>Input the current values:</legend>
+            Hurricane Latitude:
+            <input name="Hlat" type="number" required /> N
+            <br>
+            <br> Hurricane Longitude:
+            <input name="Hlong" type="number" required> W
+            <br>
+            <br> Maximum Sustained Winds (in Knots):
+            <input name="MaxSusWinds" type="number" required>
+            <br>
+            <br> City Latitude:
+            <input name="Clong" type="number" required> N
+            <br>
+            <br> City Longitude:
+            <input name="Clong" type="number" required> W
+            <br>
+            <br> City Population:
+            <input name="Pop" type="number" required>
+            <br>
+            <br> City Area in square km:
+            <input name="Area" type="number" required>
+            <br>
+            <br>
+            <input type="submit">
+        </fieldset>
+    </form>
+    <br>
+    <div class="result" align="center">
+        {% if result %}
+        {% for variable, value in original_input.items() %}
+        <b>{{ variable }}</b> : {{ value }}
+        {% endfor %}
+        <br>
+        <br> Predicted number of casualties in the city:
+        <p style="font-size:50px">{{ result }}</p>
+
+        {% endif %}
+    </div>
+
+    <footer>All the results obtained are calculated using a machine learning linear regression model which has been given minimal data for training. For testing pueposes only.</footer>
+</body>
+
+</html>

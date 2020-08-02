@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en">
 
@@ -49,17 +49,15 @@
     </form>
     <br>
     <div class="result" align="center">
-        {% if result %}
+    {% if result %}
         {% for variable, value in original_input.items() %}
-        <b>{{ variable }}</b> : {{ value }}
+            <b>{{ variable }}</b> : {{ value }}
         {% endfor %}
         <br>
-        <br> Predicted number of casualties in the city:
-        <p style="font-size:50px">{{ result }}</p>
-
-        {% endif %}
-    </div>
-
+        <br> Predicted number of bikes in use:
+           <p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
     <footer>All the results obtained are calculated using a machine learning linear regression model which has been given minimal data for training. For testing pueposes only.</footer>
 </body>
 

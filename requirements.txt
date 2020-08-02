@@ -2,4 +2,3 @@ flask
 pandas
 gunicorn
 sklearn
-xgboost

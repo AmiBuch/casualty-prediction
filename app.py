@@ -20,7 +20,7 @@ app = flask.Flask(__name__, template_folder = 'templates')
 def main():
     if flask.request.method == 'GET':
         return(flask.render_template('main.html'))
-    if flask.request_method == 'POST':
+    if flask.request.method == 'POST':
         Hlat = flask.request.form['Hlat']
         Hlong = flask.request.form['Hlong']
         MaxSusWinds = flask.request.form['MaxSusWinds']

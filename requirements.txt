@@ -1,4 +1,8 @@
 flask
-pandas
 gunicorn
 sklearn
+nltk
+pytesseract
+cv2
+skimage
+string

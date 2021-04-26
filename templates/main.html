@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Grade-It! - An Easy Grading Tool for Online Checking</title>
+    <title>Hurricane Casualty Prediction</title>
     <style>
         form {
             margin: auto;
@@ -21,18 +21,29 @@
 <body>
     <form action="{{ url_for('main') }}" method="POST">
         <fieldset>
-            <legend>Input the specified information:</legend>
-            The correct answer (according to authorities):
-            <input name="cor_ans" type="text" required /> N
+            <legend>Input the current values:</legend>
+            Hurricane Latitude:
+            <input name="Hlat" type="number" required /> N
             <br>
-            Your student's answer photo:
+            <br> Hurricane Longitude:
+            <input name="Hlong" type="number" required> W
+            <br>
+            <br> Maximum Sustained Winds (in Knots):
+            <input name="MaxSusWinds" type="number" required>
+            <br>
+            <br> City Latitude:
+            <input name="Clat" type="number" required> N
+            <br>
+            <br> City Longitude:
+            <input name="Clong" type="number" required> W
+            <br>
+            <br> City Population:
+            <input name="Pop" type="number" required>
+            <br>
+            <br> City Area in square km:
+            <input name="Area" type="number" required>
             <br>
             <input name="dumb" type="file" required>
-            <br>
-            Total marks alloted for question: 
-            <br>
-            <input name="marks_me" type="number" required>
-            <br>
             <br>
             <input type="submit">
         </fieldset>
@@ -40,12 +51,15 @@
     <br>
     <div class="result" align="center">
     {% if result %}
-        
-        <br> Predicted marks:
+        {% for variable, value in original_input.items() %}
+            <b>{{ variable }}</b> : {{ value }}
+        {% endfor %}
+        <br>
+        <br> Predicted number of casualties in city:
            <p style="font-size:50px">{{ result }}</p>
     {% endif %}
 </div>
-    <footer>All the results obtained are calculated using a cosine similarity model. For testing purposes only.</footer>
+    <footer>All the results obtained are calculated using a machine learning linear regression model which has been given minimal data for training. For testing pueposes only.</footer>
 </body>
 
 </html>

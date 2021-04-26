@@ -1,5 +1,4 @@
 flask
 gunicorn
 sklearn
-nltk
 pandas
